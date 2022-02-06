@@ -1,0 +1,9 @@
+<div class = "profile_page">
+  <div class = "profile_content">
+    <div><%= image_tag @user.image.url %></div>
+    <h1>Hello, Mr/Mrs. <%= @user.name %></h1>
+    <p>Email address: <%= @user.email %></p>
+    <div><%= link_to "Edit profile", edit_user_path(@user.id) %></div>
+    <div><%= link_to 'To the post list', posts_path %></div>
+  </div>
+</div>

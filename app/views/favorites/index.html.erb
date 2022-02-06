@@ -1,0 +1,37 @@
+<div>
+  <h4 class = "favorite_top"><%= image_tag @current_user.image.url %><%= @current_user.name %> Favorite post</h4>
+  <% @favorites.each do |favorite| %>
+    <ul class="article_main">
+      <div class = "content_userimg">
+        <li><%= image_tag favorite.post.user.image.url %></li>
+        <li><%= favorite.post.user.name %></li>
+      </div>
+      <div class = "content_main">
+        <li class="article_title"><%= favorite.post.title %></li>
+        <% if favorite.post.image.url.nil? %>
+          <li></li>
+        <% else %>
+          <li><%= image_tag favorite.post.image.url %></li>
+        <% end %>
+        <li><%= favorite.post.content.truncate(100) %></li>
+        <li><%= link_to 'Check the details', post_path(favorite.post.id) %></li>
+      </div>
+    </ul>
+  <% end %>
+</div>
+<div class = "sidebar">
+  <ul>
+    <li class = "side_userimg"><%= image_tag @current_user.image.url %></li>
+    <li class = "side_userimg">Hello, Mr/Mrs. <%= @current_user.name %></li>
+    <li><%= link_to @current_user.name + "To your favorite post", favorites_path %></li>
+    <br>
+    <p class = "side_line">
+    <li class = "side_userimg">Users with posts</li>
+  <% @post_users.each do |post_user| %>
+    <% if post_user.user.name != @current_user.name %>
+      <li class = "side_userimg"><%= image_tag post_user.user.image.url %></li>
+      <li><%= post_user.user.name %></li>
+    <% end %>
+  <% end %>
+  </ul>
+</div>

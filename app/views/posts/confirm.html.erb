@@ -1,0 +1,38 @@
+<div>
+  <h4>Send with the following contents</h4>
+  <%= form_with(model: @post, url: posts_path, local: true) do |form| %>
+  <ul class="article_main">
+    <div class = "content_userimg">
+      <li><%= image_tag @post.user.image.url %></li>
+      <li><%= @post.user.name %></li>
+    </div>
+    <div class = "content_main">
+      <li><%= form.hidden_field :title %></li>
+      <li><%= @post.title %></li>
+      <li><%= form.hidden_field :content %></li>
+      <li><%= @post.content %></li>
+      <li><%= form.hidden_field :image_cache %></li>
+      <li><%= image_tag(@post.image.url) if @post.image && @post.image.url %></li>
+      <li><%= form.submit "Sign up" %></li>
+      <li><%= form.submit "Return", name: 'back' %></li>
+    </div>
+  </ul>
+  <% end %>
+</div>
+
+<div class = "sidebar">
+  <ul>
+    <li class = "side_userimg"><%= image_tag @current_user.image.url %></li>
+    <li class = "side_userimg">Hello, Mr/Mrs. <%= @current_user.name %></li>
+    <li><%= link_to @current_user.name + "To your favorite post", favorites_path %></li>
+    <br>
+    <p class = "side_line">
+    <li class = "side_userimg">Users with posts</li>
+  <% @post_users.each do |post_user| %>
+    <% if post_user.user.name != @current_user.name %>
+      <li class = "side_userimg"><%= image_tag post_user.user.image.url %></li>
+      <li><%= post_user.user.name %></li>
+    <% end %>
+  <% end %>
+  </ul>
+</div>

@@ -1,0 +1,45 @@
+<%= form_with(model: @post, local: true, url: choose_new_or_edit) do |form| %>
+  <% if @post.errors.any? %>
+  <div id="error_explanation">
+    <ul>
+      <h4><%= @post.errors.count %>There are some errors.</h4>
+    <% @post.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+  <% end %>
+  <div class = "newpost_fillin">
+    <ul>
+      <li class = "fillin_box">Create a blog</li>
+      <li class = "fillin_box"><%= form.label :title %></li>
+      <li><%= form.text_field :title, size:"50x10" %></li>
+      <li class = "fillin_box"><%= form.label :content %></li>
+      <li><%= form.text_area :content, size:"50x10" %></li>
+      <li class = "fillin_box"><%= form.label :image %></li>
+      <li><%= image_tag(@post.image.url) if @post.image && @post.image.url %></li>
+      <li><%= form.file_field :image %></li>
+      <li><%= form.hidden_field :image_cache %></li>
+      <li class = "fillin_box"><%= form.submit %></li>
+      <li class = "fillin_box"><%= link_to "Return to the blog list screen", posts_path %></li>
+    </ul>
+  </div>
+<% end %>
+
+<div class = "sidebar">
+  <ul>
+    <li class = "side_userimg"><%= image_tag @current_user.image.url %></li>
+    <li class = "side_userimg">Hello, Mr/Mrs. <%= @current_user.name %></li>
+    <li><%= link_to @current_user.name + "To your favorite post", favorites_path %></li>
+    <br>
+    <p class = "side_line">
+    <li class = "side_userimg">Users with posts</li>
+
+  <% @post_users.each do |post_user| %>
+    <% if post_user.user.name != @current_user.name %>
+      <li class = "side_userimg"><%= image_tag post_user.user.image.url %></li>
+      <li><%= post_user.user.name %></li>
+    <% end %>
+  <% end %>
+  </ul>
+</div>

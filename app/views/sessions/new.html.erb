@@ -1,0 +1,20 @@
+<div class = "fill_in">
+  <ul>
+  <h4>Please log in to see the post.</h4>
+  <% flash.each do |key, value| %>
+    <%= content_tag(:div, value, class: "#{key}") %>
+  <% end %>
+    <%= form_with(scope: :session, url: sessions_path, local: true) do |f| %>
+      <li class = "fillin_box">
+        <span><%= f.label :email %></span>
+        <span><%= f.email_field :email %></span>
+      </li>
+      <li class = "fillin_box">
+        <span><%= f.label :password %></span>
+        <span><%= f.password_field :password %></span>
+      <li class = "fillin_box">
+        <%= f.submit "Log in" %>
+      </li>
+    <% end %>
+  </ul>
+</div>
