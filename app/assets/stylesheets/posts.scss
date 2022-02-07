@@ -1,3 +1,56 @@
-// Place all the styles related to the posts controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: https://sass-lang.com/
+.main_content{
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 90px;
+}
+
+.article_main{
+  width:614px;
+  border:1px solid;
+  padding:10px;
+  margin-bottom:10px;
+  display: flex;
+}
+.content_userimg img{
+  width: 120px;
+}
+
+.content_userimg{
+  margin-left: 20px;
+  text-align: center;
+}
+
+.content_userimg a{
+  color: #3578D3;
+  font-weight: bolder;
+  text-decoration: none;
+}
+
+.content_main{
+  margin: 0 65px;
+  text-align: left;
+}
+
+.sidebar{
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.side_userimg{
+  margin-top: 20px;
+}
+.side_userimg img{
+  width:90px;
+}
+
+.side_line{
+  border-bottom: 1px solid black;
+}
+
+.fill_in{
+  margin: 0 auto 0 auto;
+}
+
+.newpost_fillin{
+  margin-left:150px;
+}
