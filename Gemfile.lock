@@ -262,6 +262,7 @@ DEPENDENCIES
   pry-rails
   puma (~> 4.1)
   rails (~> 6.0.3)
+  rexml
   sass-rails (>= 6)
   selenium-webdriver
   spring
